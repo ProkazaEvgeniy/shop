@@ -2,6 +2,7 @@ package net.devstudy.ishop.repository;
 
 import java.util.List;
 
+import net.devstudy.framework.annotation.JDBCRepository;
 import net.devstudy.framework.annotation.jdbc.CollectionItem;
 import net.devstudy.framework.annotation.jdbc.Select;
 import net.devstudy.ishop.entity.Product;
@@ -14,6 +15,7 @@ import net.devstudy.ishop.repository.builder.ListProductsSearchFormSQLBuilder;
  * @author devstudy
  * @see http://devstudy.net
  */
+@JDBCRepository
 public interface ProductRepository {
 
 	@Select("select p.*, c.name as category, pr.name as producer from product p, producer pr, category c where c.id=p.id_category and pr.id=p.id_producer limit ? offset ?")
