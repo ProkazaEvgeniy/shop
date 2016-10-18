@@ -196,6 +196,7 @@ public class DependencyInjectionManager {
 
 	protected List<Class<?>> getAllClassesInPackage(String packageName) throws ClassNotFoundException, IOException {
 		ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
+//		ClassLoader classLoader = DependencyInjectionManager.class.getClassLoader();
 		Enumeration<URL> resources = classLoader.getResources(packageName.replace('.', '/'));
 		List<Class<?>> classes = new ArrayList<>();
 		while (resources.hasMoreElements()) {

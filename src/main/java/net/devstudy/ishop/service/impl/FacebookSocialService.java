@@ -20,7 +20,7 @@ import net.devstudy.ishop.service.SocialService;
  * @see http://devstudy.net
  */
 @Component
-class FacebookSocialService implements SocialService {
+public class FacebookSocialService implements SocialService {
 	@Value("social.facebook.idClient")
 	private String idClient;
 	@Value("social.facebook.secret")
