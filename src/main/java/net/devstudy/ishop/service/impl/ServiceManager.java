@@ -6,7 +6,6 @@ import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
-import java.util.concurrent.TimeUnit;
 
 import javax.servlet.ServletContext;
 import javax.sql.DataSource;
@@ -74,8 +73,6 @@ public class ServiceManager {
 	private ServiceManager(ServletContext context) {
 		loadApplicationProperties();
 		dataSource = createDataSource();
-
-	
 		
 		Map<Class<?>, Object> externalDependencies = new HashMap<>();
 		externalDependencies.put(DataSource.class, dataSource);
@@ -83,7 +80,6 @@ public class ServiceManager {
 		dependencyInjectionManager.scanPackage("net.devstudy.ishop.repository");
 		dependencyInjectionManager.scanPackage("net.devstudy.ishop.service.impl");
 		dependencyInjectionManager.injectDependencies();
-
 	}
 
 	private BasicDataSource createDataSource() {

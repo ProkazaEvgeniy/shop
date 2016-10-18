@@ -23,11 +23,13 @@ import net.devstudy.ishop.service.SocialService;
 public class FacebookSocialService implements SocialService {
 	@Value("social.facebook.idClient")
 	private String idClient;
+	
 	@Value("social.facebook.secret")
 	private String secret;
+	
 	@Value("app.host")
 	private String host;
-
+	
 	private String getRedirectUrl(){
 		return host + "/from-social";
 	}

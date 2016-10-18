@@ -28,7 +28,7 @@ public class ProductServiceImpl implements ProductService {
 	private ProducerRepository producerRepository;
 	@Autowired
 	private CategoryRepository categoryRepository;
-	 
+
 	@Override
 	public List<Product> listAllProducts(int page, int limit) {
 		int offset = (page - 1) * limit;

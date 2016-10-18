@@ -14,10 +14,5 @@ import java.lang.annotation.Target;
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
-public @interface Table {
-	String name();
-
-	String id() default "id";
-
-	String nextIdExpression() default "";
+public @interface JDBCRepository {
 }
