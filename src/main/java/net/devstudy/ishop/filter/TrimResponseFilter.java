@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletResponseWrapper;
  * @author devstudy
  * @see http://devstudy.net
  */
-@WebFilter(filterName="TrimResponseFilter")
+//@WebFilter(filterName="TrimResponseFilter")
 public class TrimResponseFilter extends AbstractFilter {
 
 	@Override
