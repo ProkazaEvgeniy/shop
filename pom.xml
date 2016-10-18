@@ -57,7 +57,11 @@
 			<artifactId>restfb</artifactId>
 			<version>1.25.0</version>
 		</dependency>
-
+		<dependency>
+			<groupId>com.vk.api</groupId>
+			<artifactId>sdk</artifactId>
+			<version>0.3.1</version>
+		</dependency>
 		<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-email</artifactId>
