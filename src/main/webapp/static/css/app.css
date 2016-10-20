@@ -156,6 +156,10 @@ footer {
 	margin-right: 10px;
 }
 
+.navbar-right.registration-in {
+	margin-right: 10px;
+}
+
 img.small {
 	max-height: 80px;
 	margin: 0 auto;

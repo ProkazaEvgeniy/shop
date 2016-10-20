@@ -5,18 +5,12 @@ import net.devstudy.framework.annotation.jdbc.JDBCRepository;
 import net.devstudy.framework.annotation.jdbc.Select;
 import net.devstudy.ishop.entity.Account;
 
-/**
- * 
- * @author devstudy
- * @see http://devstudy.net
- */
 @JDBCRepository
-public interface AccountRepository {
+public interface RegistrastionRepository {
 
+	@Insert
+	Account registration(Account account);
+	
 	@Select("select * from account where email=?")
 	Account findByEmail(String email);
-	
-	@Insert
-	void create(Account account);
-	
 }

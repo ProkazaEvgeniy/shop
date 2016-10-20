@@ -28,4 +28,9 @@ public class SocialAccount {
 	public String getAvatarUrl() {
 		return avatarUrl;
 	}
+
+	@Override
+	public String toString() {
+		return String.format("SocialAccount [name=%s, email=%s, avatarUrl=%s]", name, email, avatarUrl);
+	}
 }

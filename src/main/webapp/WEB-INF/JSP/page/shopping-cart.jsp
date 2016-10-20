@@ -16,7 +16,8 @@
 					<a href="javascript:void(0);" class="post-request btn btn-primary btn-block" data-url="/order">Make order</a>
 				</c:when>
 				<c:otherwise>
-					<ishop:sign-in classes="btn-block" />
+					<ishop:sign-in classes="btn-block" /><br>
+					<ishop:registration classes="btn-block"/>
 				</c:otherwise>
 			</c:choose>
 		</div>

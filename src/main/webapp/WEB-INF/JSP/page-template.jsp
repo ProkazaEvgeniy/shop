@@ -6,6 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>&lt;/&gt;DevStudy.net - IShop layout</title>
+<link rel="icon" type="image/png" sizes="16x16" href="/media/favicon/favicon-16x16.png">
 <link href="/static/css/bootstrap.css" rel="stylesheet">
 <link href="/static/css/bootstrap-theme.css" rel="stylesheet">
 <link href="/static/css/font-awesome.css" rel="stylesheet">

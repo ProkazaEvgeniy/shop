@@ -17,6 +17,7 @@ import org.slf4j.LoggerFactory;
 import net.devstudy.framework.factory.DependencyInjectionManager;
 import net.devstudy.ishop.service.OrderService;
 import net.devstudy.ishop.service.ProductService;
+import net.devstudy.ishop.service.RegistrastionService;
 import net.devstudy.ishop.service.SocialService;
 
 /**
@@ -46,6 +47,10 @@ public class ServiceManager {
 
 	public SocialService getSocialService() {
 		return dependencyInjectionManager.getInstance(SocialService.class);
+	}
+	
+	public RegistrastionService getRegistrastionService(){
+		return dependencyInjectionManager.getInstance(RegistrastionService.class);
 	}
 
 	public String getApplicationProperty(String key) {

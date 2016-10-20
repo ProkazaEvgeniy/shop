@@ -9,6 +9,7 @@ import net.devstudy.ishop.entity.Category;
 import net.devstudy.ishop.entity.Producer;
 import net.devstudy.ishop.entity.Product;
 import net.devstudy.ishop.form.SearchForm;
+import net.devstudy.ishop.repository.AccountRepository;
 import net.devstudy.ishop.repository.CategoryRepository;
 import net.devstudy.ishop.repository.ProducerRepository;
 import net.devstudy.ishop.repository.ProductRepository;
@@ -28,6 +29,8 @@ public class ProductServiceImpl implements ProductService {
 	private ProducerRepository producerRepository;
 	@Autowired
 	private CategoryRepository categoryRepository;
+	
+	
 
 	@Override
 	public List<Product> listAllProducts(int page, int limit) {

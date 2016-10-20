@@ -1,5 +1,8 @@
 package net.devstudy.ishop.service.impl;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.restfb.DefaultFacebookClient;
 import com.restfb.FacebookClient;
 import com.restfb.FacebookClient.AccessToken;
@@ -21,6 +24,7 @@ import net.devstudy.ishop.service.SocialService;
  */
 @Component
 public class FacebookSocialService implements SocialService {
+	private final static Logger LOGGER = LoggerFactory.getLogger(FacebookSocialService.class);
 	@Value("social.facebook.idClient")
 	private String idClient;
 	
@@ -49,6 +53,8 @@ public class FacebookSocialService implements SocialService {
 		client = new DefaultFacebookClient(accessToken.getAccessToken(), Version.VERSION_2_5);
 		User user = client.fetchObject("me", User.class, Parameter.with("fields", "name,email,first_name,last_name"));
 		String avatarUrl = String.format("https://graph.facebook.com/v2.7/%s/picture?type=small", user.getId());
-		return new SocialAccount(user.getFirstName(), user.getEmail(), avatarUrl);
+		SocialAccount socialAccount = new SocialAccount(user.getFirstName(), user.getEmail(), avatarUrl);
+		LOGGER.info("Created new Social Account : " + socialAccount);
+		return socialAccount;
 	}
 }

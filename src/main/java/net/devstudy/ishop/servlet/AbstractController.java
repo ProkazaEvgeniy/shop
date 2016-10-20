@@ -8,9 +8,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import net.devstudy.ishop.form.ProductForm;
+import net.devstudy.ishop.form.RegistrationForm;
 import net.devstudy.ishop.form.SearchForm;
 import net.devstudy.ishop.service.OrderService;
 import net.devstudy.ishop.service.ProductService;
+import net.devstudy.ishop.service.RegistrastionService;
 import net.devstudy.ishop.service.SocialService;
 import net.devstudy.ishop.service.impl.ServiceManager;
 
@@ -25,12 +27,14 @@ public abstract class AbstractController extends HttpServlet {
 	private ProductService productService;
 	private OrderService orderService;
 	private SocialService socialService;
+	private RegistrastionService registrastionService;
 
 	@Override
 	public final void init() throws ServletException {
 		productService = ServiceManager.getInstance(getServletContext()).getProductService();
-		orderService =  ServiceManager.getInstance(getServletContext()).getOrderService();
+		orderService = ServiceManager.getInstance(getServletContext()).getOrderService();
 		socialService = ServiceManager.getInstance(getServletContext()).getSocialService();
+		registrastionService = ServiceManager.getInstance(getServletContext()).getRegistrastionService();
 	}
 
 	public final ProductService getProductService() {
@@ -40,19 +44,23 @@ public abstract class AbstractController extends HttpServlet {
 	public final OrderService getOrderService() {
 		return orderService;
 	}
-	
+
 	public final SocialService getSocialService() {
 		return socialService;
 	}
-	
+
+	public final RegistrastionService getRegistrastionService() {
+		return registrastionService;
+	}
+
 	public final int getPageCount(int totalCount, int itemsPerPage) {
 		int res = totalCount / itemsPerPage;
-		if(res * itemsPerPage != totalCount) {
+		if (res * itemsPerPage != totalCount) {
 			res++;
 		}
 		return res;
 	}
-	
+
 	public final int getPage(HttpServletRequest request) {
 		try {
 			return Integer.parseInt(request.getParameter("page"));
@@ -60,17 +68,24 @@ public abstract class AbstractController extends HttpServlet {
 			return 1;
 		}
 	}
-	
+
 	public final SearchForm createSearchForm(HttpServletRequest request) {
 		return new SearchForm(
 				request.getParameter("query"), 
-				request.getParameterValues("category"), 
+				request.getParameterValues("category"),
 				request.getParameterValues("producer"));
 	}
-	
+
 	public final ProductForm createProductForm(HttpServletRequest request) {
 		return new ProductForm(
 				Integer.parseInt(request.getParameter("idProduct")),
 				Integer.parseInt(request.getParameter("count")));
+	}
+
+	public final RegistrationForm createRegistrationForm(HttpServletRequest request) {
+		return new RegistrationForm(
+				request.getParameter("name"), 
+				request.getParameter("email"),
+				request.getParameter("avatarUrl"));
 	}
 }
