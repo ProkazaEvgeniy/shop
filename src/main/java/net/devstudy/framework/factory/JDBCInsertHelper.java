@@ -27,8 +27,9 @@ class JDBCInsertHelper extends JDBCAbstractSQLHelper {
 		Class<?> entityClass = entity.getClass();
 		Table table = entityClass.getAnnotation(Table.class);
 		validateTableAnnotation(table, entityClass);
-		insertEntity(entity, table, method, insert.resultSetHandlerClass());
-		return null;
+//		insertEntity(entity, table, method, insert.resultSetHandlerClass());
+//		return null;
+		return insertEntity(entity, table, method, insert.resultSetHandlerClass());
 	}
 
 	private void validateMethodArgs(Method method, Object[] args) {
@@ -46,7 +47,7 @@ class JDBCInsertHelper extends JDBCAbstractSQLHelper {
 		}
 	}
 
-	private void insertEntity(Object entity, Table table, Method method, Class<? extends ResultSetHandler> resultSetHandlerClass)
+	private Object insertEntity(Object entity, Table table, Method method, Class<? extends ResultSetHandler> resultSetHandlerClass)
 			throws IllegalAccessException, InvocationTargetException {
 		List<Field> fields = ReflectionUtils.getAccessibleEntityFields(entity.getClass());
 		InsertQuery sql = build(entity, table, fields);
@@ -55,6 +56,7 @@ class JDBCInsertHelper extends JDBCAbstractSQLHelper {
 		Object insertedEntity = JDBCUtils.insert(JDBCConnectionUtils.getCurrentConnection(), sql.getSql().toString(), 
 				resultSetHandler, sql.getParams().toArray());
 		updateIdField(entity, insertedEntity, sql.getIdField(), table.id());
+		return insertedEntity;
 	}
 
 	private InsertQuery build(Object entity, Table table, List<Field> fields) throws IllegalAccessException {

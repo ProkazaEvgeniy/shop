@@ -45,14 +45,8 @@ public class RegistrationController extends AbstractController {
 		} else {
 			if (registrationForm.getEmail().equals(accountView.getEmail())) {
 				req.getSession().setAttribute(Constants.CURRENT_ACCOUNT, accountView);
-				LOGGER.info("I went account : " + accountView.toString());
-			} else {
-				Account accountRegistation = getRegistrastionService().registration(new Account(
-						registrationForm.getName(), 
-						registrationForm.getEmail(), "/media/avatar/" + registrationForm.getAvatarUrl()));
-				LOGGER.info("Created new account : " + accountRegistation.toString());
-				req.getSession().setAttribute(Constants.CURRENT_ACCOUNT, accountRegistation);
-			}
+				LOGGER.info("Come by account : " + accountView.toString());
+			} 
 		}
 		RoutingUtils.redirect("/products", req, resp);
 	}
